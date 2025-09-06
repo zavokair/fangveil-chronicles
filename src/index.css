@@ -2,95 +2,141 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Fangveil Society Design System - Dark Horror/Cosmic Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core cosmic theme colors */
+    --background: 240 10% 3.9%;        /* Deep space black */
+    --foreground: 0 0% 98%;            /* Pure white text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Glass morphism */
+    --glass: 0 0% 100% / 0.03;         /* Ultra-subtle white overlay */
+    --glass-border: 0 0% 100% / 0.08;   /* Subtle border */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary neon purple */
+    --primary: 270 91% 65%;            /* Neon purple #9b5cf5 */
+    --primary-foreground: 0 0% 0%;
+    --primary-glow: 270 91% 75%;       /* Lighter purple for glows */
+    
+    /* Secondary emerald */
+    --secondary: 160 84% 39%;          /* Emerald #10b981 */
+    --secondary-foreground: 0 0% 0%;
+    --secondary-glow: 160 84% 49%;     /* Lighter emerald */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Accent colors */
+    --accent: 240 10% 15%;             /* Dark purple-grey */
+    --accent-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted elements */
+    --muted: 240 5% 12%;
+    --muted-foreground: 240 5% 64%;    /* Neutral grey text */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Form inputs */
+    --input: 240 10% 8%;               /* Dark input background */
+    --border: 240 10% 15%;             /* Subtle borders */
+    --ring: 270 91% 65%;               /* Purple focus ring */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Radius */
+    --radius: 0.75rem;
 
-    --radius: 0.5rem;
+    /* Cosmic gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(260 15% 8%) 25%, hsl(280 20% 12%) 50%, hsl(240 10% 3.9%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+    --gradient-emerald: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary-glow)) 100%);
+    
+    /* Shadows and glows */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--primary) / 0.1);
+    --shadow-emerald: 0 0 20px hsl(var(--secondary) / 0.3), 0 0 40px hsl(var(--secondary) / 0.1);
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Starfield animation */
+    --starfield-size: 2px;
+    --starfield-opacity: 0.7;
   }
+}
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+/* Custom animations */
+@keyframes starfield {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: var(--starfield-opacity); }
+  90% { opacity: var(--starfield-opacity); }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: var(--shadow-neon); }
+  50% { box-shadow: 0 0 30px hsl(var(--primary) / 0.4), 0 0 60px hsl(var(--primary) / 0.2); }
+}
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+@keyframes emerald-pulse {
+  0%, 100% { box-shadow: var(--shadow-emerald); }
+  50% { box-shadow: 0 0 30px hsl(var(--secondary) / 0.4), 0 0 60px hsl(var(--secondary) / 0.2); }
+}
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+@keyframes fog-drift {
+  0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+  100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
+}
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+/* Utility classes */
+@layer components {
+  .glass {
+    @apply bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm;
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+  
+  .emerald-glow {
+    box-shadow: var(--shadow-emerald);
+    animation: emerald-pulse 2s ease-in-out infinite;
+  }
+  
+  .cosmic-bg {
+    background: var(--gradient-cosmic);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cosmic-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(1px 1px at 20% 30%, white, transparent),
+      radial-gradient(1px 1px at 40% 70%, white, transparent),
+      radial-gradient(1px 1px at 90% 40%, white, transparent),
+      radial-gradient(1px 1px at 60% 10%, white, transparent);
+    background-size: 100px 100px, 150px 150px, 200px 200px, 250px 250px;
+    opacity: 0.4;
+    animation: starfield 20s linear infinite;
+  }
+  
+  .cosmic-bg::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(255,255,255,0.01) 40%, transparent 70%);
+    animation: fog-drift 30s linear infinite;
+    pointer-events: none;
   }
 }
 
@@ -100,6 +146,6 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground cosmic-bg;
   }
 }
