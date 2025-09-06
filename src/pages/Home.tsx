@@ -68,9 +68,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            Investigating supernatural phenomena across India since 1947.
-            <br />
-            Where ancient wisdom meets modern investigation.
+            Where the unseen meets the unexplained — guided by ritual, proven by evidence.
           </motion.p>
 
           <motion.div
