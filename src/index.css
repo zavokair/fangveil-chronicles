@@ -107,7 +107,6 @@
   .cosmic-bg {
     background: var(--gradient-cosmic);
     position: relative;
-    overflow: hidden;
   }
   
   .cosmic-bg::before {
@@ -141,11 +140,21 @@
 }
 
 @layer base {
+  /* Enable proper scrolling */
+  html, body {
+    height: 100%;
+    overflow-x: hidden;   /* Prevent horizontal scroll */
+    overflow-y: auto;     /* Allow vertical scroll */
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground cosmic-bg;
+    @apply bg-background text-foreground;
+    background: var(--gradient-cosmic);
+    position: relative;
   }
 }

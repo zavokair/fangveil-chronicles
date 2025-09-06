@@ -25,7 +25,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen">
+        <div className="min-h-screen overflow-x-hidden cosmic-bg">
           <Header />
           <main className="pt-24">
             <Routes>
