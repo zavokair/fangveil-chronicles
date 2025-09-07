@@ -72,34 +72,12 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        // Cosmic theme animations - Enhanced starfield
-        "starfield-fast": {
+        // Cosmic theme animations
+        "starfield": {
           "0%": { transform: "translateY(0) rotate(0deg)", opacity: "0" },
-          "10%": { opacity: "1" },
-          "90%": { opacity: "1" },
-          "100%": { transform: "translateY(-100vh) rotate(180deg)", opacity: "0" }
-        },
-        "starfield-medium": {
-          "0%": { transform: "translateY(0) rotate(0deg)", opacity: "0" },
-          "15%": { opacity: "0.8" },
-          "85%": { opacity: "0.8" },
-          "100%": { transform: "translateY(-100vh) rotate(270deg)", opacity: "0" }
-        },
-        "starfield-slow": {
-          "0%": { transform: "translateY(0) rotate(0deg)", opacity: "0" },
-          "20%": { opacity: "0.6" },
-          "80%": { opacity: "0.6" },
-          "100%": { transform: "translateY(-100vh) rotate(360deg)", opacity: "0" }
-        },
-        "starfield-diagonal": {
-          "0%": { transform: "translate(100vw, 0) rotate(0deg)", opacity: "0" },
           "10%": { opacity: "0.7" },
           "90%": { opacity: "0.7" },
-          "100%": { transform: "translate(-100vw, -100vh) rotate(180deg)", opacity: "0" }
-        },
-        "twinkle": {
-          "0%, 100%": { opacity: "0.3" },
-          "50%": { opacity: "1" }
+          "100%": { transform: "translateY(-100vh) rotate(360deg)", opacity: "0" }
         },
         "neon-pulse": {
           "0%, 100%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--primary) / 0.1)" },
@@ -129,11 +107,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "starfield-fast": "starfield-fast 4s linear infinite",
-        "starfield-medium": "starfield-medium 8s linear infinite",
-        "starfield-slow": "starfield-slow 12s linear infinite",
-        "starfield-diagonal": "starfield-diagonal 6s linear infinite",
-        "twinkle": "twinkle 2s ease-in-out infinite",
+        "starfield": "starfield 20s linear infinite",
         "neon-pulse": "neon-pulse 2s ease-in-out infinite",
         "emerald-pulse": "emerald-pulse 2s ease-in-out infinite",
         "fog-drift": "fog-drift 30s linear infinite",

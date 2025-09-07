@@ -66,8 +66,10 @@
 
 /* Custom animations */
 @keyframes starfield {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: var(--starfield-opacity); }
+  90% { opacity: var(--starfield-opacity); }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
 @keyframes neon-pulse {
@@ -80,6 +82,10 @@
   50% { box-shadow: 0 0 30px hsl(var(--secondary) / 0.4), 0 0 60px hsl(var(--secondary) / 0.2); }
 }
 
+@keyframes fog-drift {
+  0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+  100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
+}
 
 /* Utility classes */
 @layer components {
@@ -105,92 +111,31 @@
   
   .cosmic-bg::before {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-image: 
-      radial-gradient(1px 1px at 15% 25%, white, transparent),
-      radial-gradient(2px 2px at 85% 45%, white, transparent),
-      radial-gradient(1px 1px at 35% 75%, white, transparent),
-      radial-gradient(1px 1px at 75% 15%, white, transparent),
-      radial-gradient(1px 1px at 55% 55%, white, transparent),
-      radial-gradient(2px 2px at 25% 85%, white, transparent),
-      radial-gradient(1px 1px at 65% 35%, white, transparent),
-      radial-gradient(1px 1px at 45% 95%, white, transparent),
-      radial-gradient(2px 2px at 95% 25%, white, transparent),
-      radial-gradient(1px 1px at 5% 65%, white, transparent);
-    background-size: 80px 80px, 120px 120px, 160px 160px, 200px 200px, 240px 240px, 180px 180px, 140px 140px, 100px 100px, 220px 220px, 300px 300px;
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: -1;
-    animation: starfield-slow 12s linear infinite;
+      radial-gradient(1px 1px at 20% 30%, white, transparent),
+      radial-gradient(1px 1px at 40% 70%, white, transparent),
+      radial-gradient(1px 1px at 90% 40%, white, transparent),
+      radial-gradient(1px 1px at 60% 10%, white, transparent);
+    background-size: 100px 100px, 150px 150px, 200px 200px, 250px 250px;
+    opacity: 0.4;
+    animation: starfield 20s linear infinite;
   }
   
   .cosmic-bg::after {
     content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(1px 1px at 10% 40%, white, transparent),
-      radial-gradient(1px 1px at 90% 60%, white, transparent),
-      radial-gradient(2px 2px at 30% 20%, white, transparent),
-      radial-gradient(1px 1px at 70% 80%, white, transparent),
-      radial-gradient(1px 1px at 50% 10%, white, transparent),
-      radial-gradient(2px 2px at 80% 30%, white, transparent);
-    background-size: 150px 150px, 180px 180px, 120px 120px, 200px 200px, 90px 90px, 250px 250px;
-    opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(255,255,255,0.01) 40%, transparent 70%);
+    animation: fog-drift 30s linear infinite;
     pointer-events: none;
-    z-index: -1;
-    animation: starfield-fast 4s linear infinite;
-  }
-  
-  .cosmic-bg {
-    position: relative;
-  }
-  
-  .cosmic-bg .moving-stars-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  .moving-stars-1 {
-    background-image: 
-      radial-gradient(1px 1px at 25% 60%, white, transparent),
-      radial-gradient(1px 1px at 75% 40%, white, transparent),
-      radial-gradient(2px 2px at 45% 85%, white, transparent);
-    background-size: 110px 110px, 170px 170px, 230px 230px;
-    opacity: 0.4;
-    animation: starfield-medium 8s linear infinite;
-  }
-  
-  .moving-stars-2 {
-    background-image: 
-      radial-gradient(1px 1px at 60% 20%, white, transparent),
-      radial-gradient(2px 2px at 20% 50%, white, transparent),
-      radial-gradient(1px 1px at 85% 70%, white, transparent);
-    background-size: 95px 95px, 145px 145px, 190px 190px;
-    opacity: 0.3;
-    animation: starfield-diagonal 6s linear infinite;
-  }
-  
-  .twinkling-stars {
-    background-image: 
-      radial-gradient(1px 1px at 15% 15%, white, transparent),
-      radial-gradient(1px 1px at 85% 85%, white, transparent),
-      radial-gradient(2px 2px at 50% 50%, white, transparent);
-    background-size: 300px 300px, 350px 350px, 400px 400px;
-    opacity: 0.2;
-    animation: twinkle 2s ease-in-out infinite;
   }
 }
 
