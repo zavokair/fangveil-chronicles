@@ -66,10 +66,8 @@
 
 /* Custom animations */
 @keyframes starfield {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-  10% { opacity: var(--starfield-opacity); }
-  90% { opacity: var(--starfield-opacity); }
-  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
 }
 
 @keyframes neon-pulse {
@@ -82,10 +80,6 @@
   50% { box-shadow: 0 0 30px hsl(var(--secondary) / 0.4), 0 0 60px hsl(var(--secondary) / 0.2); }
 }
 
-@keyframes fog-drift {
-  0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
-}
 
 /* Utility classes */
 @layer components {
@@ -111,7 +105,7 @@
   
   .cosmic-bg::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -123,19 +117,20 @@
       radial-gradient(1px 1px at 60% 10%, white, transparent);
     background-size: 100px 100px, 150px 150px, 200px 200px, 250px 250px;
     opacity: 0.4;
-    animation: starfield 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
   }
   
   .cosmic-bg::after {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-    width: 300%;
-    height: 300%;
+    width: 200px;
+    height: 200px;
     background: radial-gradient(ellipse at center, transparent 20%, rgba(255,255,255,0.01) 40%, transparent 70%);
-    animation: fog-drift 30s linear infinite;
     pointer-events: none;
+    z-index: -1;
   }
 }
 
