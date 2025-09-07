@@ -26,6 +26,10 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen overflow-x-hidden cosmic-bg">
+          {/* Additional moving star layers */}
+          <div className="moving-stars-layer moving-stars-1" />
+          <div className="moving-stars-layer moving-stars-2" />
+          <div className="moving-stars-layer twinkling-stars" />
           <Header />
           <main className="pt-24">
             <Routes>
